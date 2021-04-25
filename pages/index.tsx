@@ -23,7 +23,6 @@ export async function getStaticProps() {
 }
 
 export default function Home({ total, properties }) {
-  console.log({ total, properties });
   
   return (
     <div className="max-w-screen-lg mx-auto mt-10">
@@ -57,6 +56,7 @@ export default function Home({ total, properties }) {
               className="col-span-4">
               <PropertyCardBare
                 title={ property.fields.title }
+                slug={ property.fields.slug }
                 address={ property.fields.address }
                 description={ property.fields.shortDescription }
                 thumbnail={ property.fields.thumbnail.fields.file.url }

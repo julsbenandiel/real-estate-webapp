@@ -4,9 +4,11 @@ import { faAddressBook, faHandPointRight, faImage, faMap } from '@fortawesome/fr
 import { faBath, faBed, faDollarSign, faMapMarkerAlt, faMapPin, faMoneyBill } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
 import cx from 'classnames';
+import Link from 'next/link';
 
 interface PropertyCardBareProps {
   title: string;
+  slug: string
   address: string;
   thumbnail: string;
   description: string;
@@ -23,6 +25,7 @@ const PropertyCardBare: FC<PropertyCardBareProps> = props => {
 
   const { 
     title,
+    slug,
     address,
     thumbnail,
     description,
@@ -57,7 +60,9 @@ const PropertyCardBare: FC<PropertyCardBareProps> = props => {
         <span className="ml-2 font-semibold tracking-wide">₱{ price.toLocaleString() }</span>
       </p>
       <button className="px-5 py-2 text-sm mt-2 text-gray border border-lightBlack transition duration-150 hover:bg-black hover:text-white">
-        Visit Listing
+        <Link href={ `/listings/${slug}` }>
+          View Listing
+        </Link>
       </button>
     </div>
   )
