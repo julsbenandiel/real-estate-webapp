@@ -1,4 +1,4 @@
-import { contentfulClient } from '../contentful'
+import { contentfulClient } from '../../configs'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import Image from 'next/image';
 

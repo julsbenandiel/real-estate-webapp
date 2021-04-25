@@ -1,5 +1,5 @@
-import { contentfulClient } from './contentful';
-import PropertyCardBare from './components/PropertyCardBare';
+import { contentfulClient } from '../configs';
+import PropertyCardBare from '../components/PropertyCardBare';
 
 export async function getStaticProps() {
 
