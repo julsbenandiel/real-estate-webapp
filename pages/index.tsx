@@ -1,10 +1,5 @@
-import Head from 'next/head'
 import { contentfulClient } from './contentful';
-import { PropertyModel } from './model/property.model';
-import PropertyCard from './components/PropertyCard';
 import PropertyCardBare from './components/PropertyCardBare';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHouseUser } from '@fortawesome/free-solid-svg-icons';
 
 export async function getStaticProps() {
 
