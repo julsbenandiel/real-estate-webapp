@@ -1,8 +1,13 @@
-import { contentfulClient } from '../configs/index';
+import { createClient } from 'contentful';
 import PropertyCardBare from '../components/PropertyCardBare';
 
-export async function getStaticProps() {
+const contentfulClient = createClient({
+  space: process.env.CONTENTFUL_SPACE_ID,
+  accessToken: process.env.CONTENTFUL_ACCESS_KEY
+});
 
+
+export async function getStaticProps() {
   const options = {
     content_type: 'propertyListing'
   }

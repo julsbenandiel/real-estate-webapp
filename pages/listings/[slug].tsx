@@ -1,9 +1,13 @@
-import { contentfulClient } from '../../configs/index'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { createClient } from 'contentful';
 import Image from 'next/image';
 
-export const getStaticPaths = async () => {
+const contentfulClient = createClient({
+  space: process.env.CONTENTFUL_SPACE_ID,
+  accessToken: process.env.CONTENTFUL_ACCESS_KEY
+});
 
+export const getStaticPaths = async () => {
   const options = {
     content_type: 'propertyListing'
   }
