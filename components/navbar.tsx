@@ -18,6 +18,14 @@ const Navbar: FC<NavbarProps> = (props) => {
         <li
           style={{ letterSpacing: "1px" }} 
           className="px-5 text-sm nunito-sans transition duration-150 hover:text-lightBlack uppercase text-black font-medium"><Link href="/about">About</Link></li>
+
+        <li
+          style={{ letterSpacing: "1px" }} 
+          className="px-5 text-sm nunito-sans transition duration-150 hover:text-lightBlack uppercase text-black font-medium"><Link href="/listings">Listings</Link></li>
+
+        <li
+          style={{ letterSpacing: "1px" }} 
+          className="px-5 text-sm nunito-sans transition duration-150 hover:text-lightBlack uppercase text-black font-medium"><Link href="/contact">Contact</Link></li>
       </ul>
     </div>
   )

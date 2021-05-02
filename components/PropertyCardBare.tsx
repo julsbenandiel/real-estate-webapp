@@ -59,11 +59,11 @@ const PropertyCardBare: FC<PropertyCardBareProps> = props => {
         <span className="tracking-widest uppercase nunito-sans">Starting Price:</span>
         <span className="ml-2 font-semibold tracking-wide">₱{ price.toLocaleString() }</span>
       </p>
-      <button className="px-5 py-2 text-sm mt-2 text-gray border border-lightBlack transition duration-150 hover:bg-black hover:text-white">
-        <Link href={ `/listings/${slug}` }>
-          View Listing
-        </Link>
-      </button>
+      <Link href={ `/listings/${slug}` }>
+        <button className="px-5 py-2 text-sm mt-2 text-gray border border-lightBlack transition duration-150 hover:bg-black hover:text-white">
+            View Listing
+        </button>
+      </Link>
     </div>
   )
 }
