@@ -2,6 +2,7 @@ import { FC } from 'react';
 import Head from 'next/head';
 import styles from '../../styles/Home.module.css';
 import Navbar from '../components/navbar';
+import Footer from '../components/Footer';
 
 interface LayoutProps {}
 
@@ -22,9 +23,7 @@ const Layout:FC<LayoutProps> = (props) => {
         { children }
       </main>
 
-      {/* <footer className="bg-gray">
-        <p className="text-center text-darkGreen">hello world</p>  
-      </footer> */}
+      <Footer />
     </section>
   )
 } 

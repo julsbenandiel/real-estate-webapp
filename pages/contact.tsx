@@ -2,7 +2,7 @@ import Head from 'next/head'
 
 export default function Contact() {
   return (
-    <div>
+    <div className="h-screen">
       Contact
     </div>
   )

@@ -20,7 +20,7 @@ const Banner: FC<BannerProps> = props =>  {
     <div className="relative">
       <div
         style={{ 
-          top: "calc(100%/3)",
+          top: "calc(100%/3.5)",
           left: "3rem"
         }} 
         className="bg-black absolute z-10 p-8 text-white">

@@ -2,6 +2,7 @@ import { createClient } from 'contentful';
 import PropertyCardBare from '../components/PropertyCardBare';
 import Banner from '../components/banner';
 import { ContentModel, contentfulClient } from '../configs/index';
+import { useEffect } from 'react';
 
 export async function getServerSideProps() {
 
@@ -23,10 +24,14 @@ export async function getServerSideProps() {
 }
 
 export default function Home({ total, properties, banners }) {
+
+  useEffect(() => {
+    document.body.style.zoom = "100%"
+  }, [])
   
   return (
     <>
-      <div className="max-w-screen-xl mx-auto mt-10">
+      <div className="max-w-screen-xl mx-auto mt-5">
         <Banner banners={ banners } />
 
         <p className="text-gray border border-lightGray py-10 text-center font-bold w-full rounded-lg mt-10">Section</p>
@@ -34,8 +39,8 @@ export default function Home({ total, properties, banners }) {
         <section className="what-we-do mt-10">
           <div className="grid grid-cols-12">
             <div className="col-span-10">
-              <p className="text-gray nunito-sans tracking-widest text-sm font-medium uppercase">what we do</p>
-              <p className="playfair text-4xl mb-1 text-black">Helping you find the <span className="italic">property</span> of your dreams</p>
+              <p className="text-gray nunito-sans tracking-widest text-base font-medium uppercase">what we do</p>
+              <p className="playfair text-4xl mb-1 text-black">Helping you find the property of your dreams</p>
               <p className="italic text-4xl text-black playfair">Creating real value in property and places.</p>
             </div>
             <div className="col-span-2 h-full flex items-center">
@@ -72,6 +77,9 @@ export default function Home({ total, properties, banners }) {
               </div>
             )}
           </div>
+          
+          <p className="text-gray border border-lightGray py-10 text-center font-bold w-full rounded-lg mt-10">Section</p>
+
         </section>
       </div>
     </>

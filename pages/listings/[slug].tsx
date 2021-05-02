@@ -1,32 +1,12 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { createClient } from 'contentful';
 import Image from 'next/image';
+import { contentfulClient, ContentModel } from '../../configs';
 
-const contentfulClient = createClient({
-  space: process.env.CONTENTFUL_SPACE_ID,
-  accessToken: process.env.CONTENTFUL_ACCESS_KEY
-});
-
-export const getStaticPaths = async () => {
+export async function getServerSideProps({ query }) {
   const options = {
-    content_type: 'propertyListing'
-  }
-
-  const res = await contentfulClient.getEntries(options);
-  const paths = res.items.map((item: any) => {
-    return { params: { slug: item.fields.slug } }
-  });
-
-  return {
-    paths,
-    fallback: false
-  }
-}
-
-export const getStaticProps = async ({ params }) => {
-  const options = {
-    content_type: 'propertyListing',
-    'fields.slug': params.slug
+    content_type: ContentModel.PROPERTY_LISTING,
+    'fields.slug': query.slug
   }
 
   const res = await contentfulClient.getEntries(options);
@@ -48,14 +28,14 @@ const ListingDetailsPage = ({ listing }) => {
   } = listing.fields;
 
   return (
-    <section className="max-w-screen-lg mx-auto mt-10">
-      <p className="text-gray nunito-sans tracking-widest text-sm font-medium uppercase">about the property</p>
+    <section className="max-w-screen-xl mx-auto mt-10">
+      <p className="text-gray nunito-sans tracking-widest text-base font-medium uppercase">about the property</p>
       <div className="grid grid-cols-12">
         <div className="col-span-9">
           <p 
             style={{ lineHeight: "40px" }}
             className="text-3xl mt-5 playfair leading-relaxed tracking-wide">
-            <span className="font-normal font-semibold mr-1">{ title }</span>
+            <span className="font-normal text-green font-semibold mr-1">{ title }</span>
             <span className="font-light">is a contemporary high-rise residential building offering effortless cosmopolitan living.</span>
           </p>
         </div>
@@ -68,28 +48,31 @@ const ListingDetailsPage = ({ listing }) => {
         </div>  
       </div>  
       <hr 
-        style={{ height: "1.4px" }}
+        style={{ height: "1px" }}
         className="w-full bg-black mt-5"/>
 
       <div className="grid grid-cols-12 mt-5 gap-5">
-        <div className="col-span-6 h-full flex items-start">
+        <div className="col-span-5 h-full flex items-start">
           <section className="mt-5">
-            { documentToReactComponents(description) }
+            <p className="text-justify">{ documentToReactComponents(description) }</p>
 
             <div className="mt-10 mb-2">
-              <p className="my-3 text-gray nunito-sans tracking-widest text-sm font-medium uppercase">
-                Developer: <span className="font-semibold text-black">Developer Name</span>
+              <p className="my-3 text-gray nunito-sans tracking-widest text-sm font-medium">
+                <span className="uppercase mr-2">Developer:</span>
+                <span className="font-semibold tracking-widest text-black">Developer Name</span>
               </p>
-              <p className="my-3 text-gray nunito-sans tracking-widest text-sm font-medium uppercase">
-                Location: <span className="font-semibold text-black">Full Address</span>
+              <p className="my-3 text-gray nunito-sans tracking-widest text-sm font-medium ">
+                <span className="uppercase mr-2">Location:</span>
+                <span className="font-semibold tracking-widest text-black">Full Address</span>
               </p>
-              <p className="my-3 text-gray nunito-sans tracking-widest text-sm font-medium uppercase">
-                Amenities: <span className="font-semibold text-black">Amenities</span>
+              <p className="my-3 text-gray nunito-sans tracking-widest text-sm font-medium">
+                <span className="uppercase mr-2">Location:</span>
+                <span className="font-semibold tracking-widest text-black">Amenities</span>
               </p>
             </div>
           </section>
         </div>
-        <div className="col-span-6">
+        <div className="col-span-7">
           <Image
             src={ `https:${thumbnail.fields.file.url}` }
             alt={ `${title}-thumbnail` }

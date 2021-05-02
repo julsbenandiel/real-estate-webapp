@@ -2,7 +2,7 @@ import Head from 'next/head'
 
 export default function Listings() {
   return (
-    <div>
+    <div className="h-screen">
       listings
     </div>
   )

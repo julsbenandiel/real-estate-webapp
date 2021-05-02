@@ -52,10 +52,10 @@ a {
   font-family: "Playfair Display";
   visibility: visible;
   text-align: left;
-  line-height: 37px;
+  line-height: 45px;
   letter-spacing: 1px;
   font-weight: 400;
-  font-size: 38px;
+  font-size: 48px;
   border-color: rgb(105, 105, 105);
   border-style: none;
   margin: 0px;
@@ -64,7 +64,7 @@ a {
   color: rgb(255, 255, 255);
   text-decoration: none;
   white-space: normal;
-  width: 290px;
+  width: 400px;
   height: auto;
   min-height: 0px;
   min-width: 0px;
@@ -83,7 +83,7 @@ a {
   line-height: 23px;
   letter-spacing: 1px;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 15px;
   border-color: rgb(105, 105, 105);
   border-style: none;
   margin: 0px;
@@ -111,7 +111,7 @@ a {
   line-height: 24px;
   letter-spacing: 1px;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 15px;
   border-color: rgb(48, 48, 48);
   border-style: none;
   margin: 0px;

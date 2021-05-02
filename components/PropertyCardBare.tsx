@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAddressBook, faHandPointRight, faImage, faMap } from '@fortawesome/free-regular-svg-icons';
-import { faBath, faBed, faDollarSign, faMapMarkerAlt, faMapPin, faMoneyBill } from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight, faBath, faBed, faDollarSign, faMapMarkerAlt, faMapPin, faMoneyBill } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
 import cx from 'classnames';
 import Link from 'next/link';
@@ -46,11 +46,11 @@ const PropertyCardBare: FC<PropertyCardBareProps> = props => {
         width={450}
         height={250}
       />
-      <p className="playfair py-2 text-2xl font-medium w-full truncate" >{ title }</p>
-      <p className="-mt-2 flex mb-2 justify-start text-gray text-xs">
+      <p className="playfair py-2 text-2xl font-medium w-full truncate">{ title }</p>
+      <p className="-mt-2 flex mb-4 justify-start text-gray text-sm">
         <FontAwesomeIcon
           icon={ faMapMarkerAlt } 
-          className="w-2 text-gray mr-1"
+          className="w-2 text-green mr-2"
         />
         <span>{ address }</span>
       </p>
@@ -61,7 +61,13 @@ const PropertyCardBare: FC<PropertyCardBareProps> = props => {
       </p>
       <Link href={ `/listings/${slug}` }>
         <button className="px-5 py-2 text-sm mt-2 text-gray border border-lightBlack transition duration-150 hover:bg-black hover:text-white">
-            View Listing
+          <div className="flex items-center justify-center">
+            <p className="uppercase text-xs">View Listing</p>
+            <FontAwesomeIcon 
+              className="w-2 ml-2"
+              icon={ faAngleRight }
+            />
+          </div>
         </button>
       </Link>
     </div>
