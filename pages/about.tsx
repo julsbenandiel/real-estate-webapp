@@ -1,4 +1,6 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Agent from '../components/Agent';
 import { contentfulClient, ContentModel } from '../configs';
 
@@ -28,13 +30,19 @@ export default function Contact({ agents, text }) {
     <div className="max-w-screen-xl mx-auto mt-10">
       <div className="grid grid-cols-12">
         <div className="col-span-10">
-          <p className="text-gray nunito-sans tracking-widest text-sm font-medium uppercase">what we do</p>
-          <p className="playfair text-4xl mb-1 text-black">Helping you find the <span className="italic">property</span> of your dreams</p>
-          <p className="italic text-4xl text-black playfair">Creating real value in property and places.</p>
+          <p className="text-gray nunito-sans tracking-widest text-base font-medium uppercase">what we do</p>
+          <p className="playfair text-3xl mb-1 text-black">Helping you find the <span className="italic">property</span> of your dreams</p>
+          <p className="italic text-3xl text-black playfair">Creating real value in property and places.</p>
         </div>
         <div className="col-span-2 h-full flex items-center">
           <button className="w-full px-5 py-3 text-sm mt-2 text-gray border border-lightBlack transition duration-150 hover:bg-black hover:text-white">
-          Contact Us
+            <p className="uppercase flex items-center justify-center">
+              <FontAwesomeIcon 
+                className="w-3 mr-2"
+                icon={ faEnvelope }
+              />
+              contact us
+            </p>
           </button>
         </div>
       </div>
@@ -45,6 +53,9 @@ export default function Contact({ agents, text }) {
 
       <div className="grid grid-cols-12 gap-10 mt-10">
         <div className="col-span-4">
+        <p className="mb-5 text-gray nunito-sans tracking-widest text-base font-medium uppercase">
+          about us
+        </p>
           {/* { documentToReactComponents(text.fields.aboutUsText) } */}
           <p className="mb-5 text-justify text-light text-gray">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim 
@@ -56,7 +67,14 @@ export default function Contact({ agents, text }) {
             mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt.
           </p>
 
-          <p className="mb-5 text-justify text-light text-gray">Nemo enim ipsam voluptatem quia volupsit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione</p>
+        <hr 
+          style={{ height: "1px" }}
+          className="bg-black mt-5"/>
+
+        
+        <p className="mt-3 text-xs text-gray mb-5 text-justify text-light text-gray">Nemo enim ipsam voluptatem quia volupsit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione</p>
+
+
         </div>
 
         <div className="col-span-8">
