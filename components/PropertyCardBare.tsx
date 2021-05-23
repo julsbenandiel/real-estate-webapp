@@ -16,9 +16,9 @@ interface PropertyCardBareProps {
   bathroom: number;
   floorArea: number;
   price: number;
-  forSale: boolean;
-  forRent: boolean;
-  imageCount: number;
+  forSale?: boolean;
+  forRent?: boolean;
+  imageCount?: number;
 }
 
 const PropertyCardBare: FC<PropertyCardBareProps> = props => {
@@ -48,12 +48,12 @@ const PropertyCardBare: FC<PropertyCardBareProps> = props => {
         height={250}
       />
       <p className="py-2 text-lg text-blue font-medium w-full truncate">{ title }</p>
-      <p className="-mt-2 flex mb-4 justify-start text-gray text-sm">
+      <p className="-mt-2 flex mb-4 items-center justify-start text-gray text-sm">
         <FontAwesomeIcon
           icon={ faMapMarkerAlt } 
-          className="w-2 text-blue mr-2"
+          className="text-blue mr-2"
         />
-        <span>{ address }</span>
+        <span className="font-semibold">{ address }</span>
       </p>
       <p className="text-gray text-sm">{ description }</p>
       <p className="mt-6 text-gray text-sm">

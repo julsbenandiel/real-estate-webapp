@@ -15,11 +15,13 @@ module.exports = {
       gray: '#4B5563',
       lightGray: '#fafafa',
       lightBlack: "#696969",
-      blue: '#2563EB',
+      blue: '#222fbb',
+      // blue: '#2563EB',
       orange: '#f2922c',
       royalblue: '#1e009f',
       wallblue: '#518099',
-      gold: '#ffb800'
+      gold: '#ffb800',
+      navy: "#30388c"
     }
   },
   screes: {

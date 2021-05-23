@@ -4,13 +4,15 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore ,{ Navigation, Pagination, Autoplay } from 'swiper';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import { PropertyListingType } from '../models/PropertyListing';
 
 interface FeaturdPropertiesProps {
   nextRef: any;
   prevRef: any;
+  properties: any;
 }
 
-const FeaturdProperties: FC<FeaturdPropertiesProps> = ({ nextRef, prevRef }) => {
+const FeaturdProperties: FC<FeaturdPropertiesProps> = ({ nextRef, prevRef, properties }) => {
  
   SwiperCore.use([ Pagination, Navigation, Autoplay ]);
 
@@ -61,30 +63,33 @@ const FeaturdProperties: FC<FeaturdPropertiesProps> = ({ nextRef, prevRef }) => 
           nextEl: nextRef.current,
         }}
       >
-        { houses.map((house: any, index: number) => (
-          <SwiperSlide key={ index }>
-            <div className="cursor-pointer">
-              <Image
-                width="420"
-                height="320"
-                className="rounded"
-                alt={ house.name }
-                src={ house.src }
-              />
-            
-              <div className="text-center">
-                <p className="text-lg text-black font-semibold">{ house.name }</p>
-                <p className="text-lightBlack opacity-75 -mt-1 flex items-center justify-center text-sm">
-                  <FontAwesomeIcon 
-                    icon={ faMapMarkerAlt }
-                    className="mr-2 w-2"
+        { properties.map((property: any, index: number) => {
+            const data: PropertyListingType = property.fields;
+            return (
+              <SwiperSlide key={ index }>
+                <div className="cursor-pointer">
+                  <Image
+                    width={ data.projectLandingThumbnail.fields.file.details.image.width }
+                    height={ data.projectLandingThumbnail.fields.file.details.image.height }
+                    className="rounded"
+                    alt={ data.projectLandingThumbnail.fields.title }
+                    src={ `https://${data.projectLandingThumbnail.fields.file.url}` }
                   />
-                  <span>{ house.address }</span>
-                </p>
-              </div>
-            </div>
-          </SwiperSlide>
-        )) }
+                
+                  <div className="text-center">
+                    <p className="text-lg text-black font-semibold">{ data.projectName }</p>
+                    <p className="text-lightBlack opacity-75 -mt-1 flex items-center justify-center text-sm">
+                      <FontAwesomeIcon 
+                        icon={ faMapMarkerAlt }
+                        className="mr-2 w-2"
+                      />
+                      <span>{ data.address }</span>
+                    </p>
+                  </div>
+                </div>
+              </SwiperSlide>
+            )
+          }) }
       </Swiper>
     </section>
   )

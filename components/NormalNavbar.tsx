@@ -5,7 +5,7 @@ interface NormalNavbarProps {}
 
 const NormalNavbar:FC<NormalNavbarProps> = props => {
   return (
-    <section className="bg-white border-b border-lightGray">
+    <section className="bg-white border-b border-lightGray shadow-lg">
       <div className="maxwidth-1200 mx-auto py-5">
         <div className="flex items-center justify-start">
 

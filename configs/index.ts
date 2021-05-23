@@ -8,6 +8,7 @@ export const contentfulClient = createClient({
 export enum ContentModel {
   CAROUSEL_BANNER = 'carouselBanner',
   PROPERTY_LISTING = 'propertyListing',
+  PROPERTY_LISTING_V2 = 'listingV2',
   AGENTS = 'agents',
   ABOUT_PAGE_DATA = 'aboutPageData'
 }

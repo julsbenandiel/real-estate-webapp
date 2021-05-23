@@ -12,12 +12,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import FeaturdProperties from '../components/FeaturedProperties';
 import { faMap } from '@fortawesome/free-regular-svg-icons';
 import WhatWeDo from '../components/WhatWeDo';
+import { PropertyListingType } from '../models/PropertyListing';
 
 
 export async function getServerSideProps() {
 
   const properties = await contentfulClient.getEntries({
-    content_type: ContentModel.PROPERTY_LISTING
+    content_type: ContentModel.PROPERTY_LISTING_V2
   });
 
   const banner = await contentfulClient.getEntries({
@@ -34,6 +35,8 @@ export async function getServerSideProps() {
 }
 
 export default function Home({ total, properties, banners }) {
+
+  console.log({ properties });
 
   const [activeSection, setActiveSection] = useState<string>('home'); 
 
@@ -94,7 +97,8 @@ export default function Home({ total, properties, banners }) {
             setActiveSection={ setActiveSection }  
           />
           <div className="bg-white shadow-lg p-4 mt-2 rounded">
-            <FeaturdProperties 
+            <FeaturdProperties
+              properties={ properties }
               nextRef={ navigationNextRef }
               prevRef={ navigationPrevRef }
             />
@@ -118,26 +122,26 @@ export default function Home({ total, properties, banners }) {
         {/* max-w-screen-xl  */}
         <div className="maxwidth-1200 mx-auto">
           <div className="grid grid-cols-12 gap-5">
-            { properties.map((property: any) => 
-              <div
-                key={ property.sys.id } 
-                className="col-span-4">
-                <PropertyCardBare
-                  title={ property.fields.title }
-                  slug={ property.fields.slug }
-                  address={ property.fields.address }
-                  description={ property.fields.shortDescription }
-                  thumbnail={ property.fields.thumbnail.fields.file.url }
-                  bedroom={ 2 }
-                  floorArea={ 210 }
-                  bathroom={ 1 }
-                  price={ property.fields.price }
-                  forSale={ property.fields.forSale }
-                  forRent={ property.fields.forRent }
-                  imageCount={ property.fields.images.length }
-                />
-              </div>
-            )}
+            { properties.map((property: any) =>  {
+              const data: PropertyListingType = property.fields;
+              return (
+                <div
+                  key={ property.sys.id } 
+                  className="col-span-4">
+                  <PropertyCardBare
+                    title={ data.projectName }
+                    slug={ data.slug }
+                    address={ data.address }
+                    description={ data.shortDescription }
+                    thumbnail={ data.projectThumbnail.fields.file.url }
+                    bedroom={ 2 }
+                    floorArea={ 210 }
+                    bathroom={ 1 }
+                    price={ data.projectPrice }
+                  />
+                </div>
+              )
+            })}
           </div>
         </div>
       </section>
