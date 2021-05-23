@@ -1,6 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import '../node_modules/swiper/swiper.min.css';
+@import '../node_modules/swiper/components/pagination/pagination.min.css';
+@import '../node_modules/swiper/components/scrollbar/scrollbar.min.css';
+@import '../node_modules/swiper/components/navigation/navigation.min.css';
+@import 'swiper/swiper-bundle.css';
+
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
@@ -12,6 +19,14 @@ body {
   margin: 0;
   /* font-family: 'Open Sans', sans-serif; */
   font-family: 'Nunito Sans', sans-serif;
+}
+
+.swiper-pagination {
+  position: inherit !important;
+}
+
+.maxwidth-1200 {
+  max-width: 1200px;
 }
 
 .nunito-sans {
@@ -35,6 +50,17 @@ a {
   box-sizing: border-box;
 }
 
+
+.header-v2 {
+  background-image: url('/banner-wallpaper.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  /* background-attachment: ; */
+  background-size: cover;
+}
+
+
+
 .card-list-images-count {
   border-radius: 50px;
   top: 20px;
@@ -54,24 +80,13 @@ a {
   text-align: left;
   line-height: 45px;
   letter-spacing: 1px;
-  font-weight: 400;
-  font-size: 48px;
-  border-color: rgb(105, 105, 105);
-  border-style: none;
-  border-radius: 0px;
+  font-weight: bold;
+  font-size: 72px;
   padding: 0px;
   color: rgb(255, 255, 255);
   text-decoration: none;
   white-space: normal;
-  width: 400px;
-  height: auto;
-  min-height: 0px;
-  min-width: 0px;
-  max-height: none;
-  max-width: none;
   opacity: 1;
-  transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  transform-origin: 50% 50% 0px;
 }
 
 .luxury {

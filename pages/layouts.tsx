@@ -17,7 +17,7 @@ const Layout:FC<LayoutProps> = (props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Navbar />
+      {/* <Navbar /> */}
       
       <main className="mb-20">
         { children }

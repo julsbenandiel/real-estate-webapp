@@ -41,16 +41,17 @@ const PropertyCardBare: FC<PropertyCardBareProps> = props => {
   return (
     <div className="">
       <Image
+        className="rounded-tl-lg rounded-tr-lg"
         src={ `https:${thumbnail}` }
         alt={ `${title}-thumbnail` }
         width={450}
         height={250}
       />
-      <p className="playfair py-2 text-2xl font-medium w-full truncate">{ title }</p>
+      <p className="py-2 text-lg text-blue font-medium w-full truncate">{ title }</p>
       <p className="-mt-2 flex mb-4 justify-start text-gray text-sm">
         <FontAwesomeIcon
           icon={ faMapMarkerAlt } 
-          className="w-2 text-green mr-2"
+          className="w-2 text-blue mr-2"
         />
         <span>{ address }</span>
       </p>

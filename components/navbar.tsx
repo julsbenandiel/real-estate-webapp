@@ -1,31 +1,62 @@
 import { FC } from 'react';
 import Link from 'next/link';
+import cx from 'classnames';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLocationArrow, faSearchLocation } from '@fortawesome/free-solid-svg-icons';
 
-interface NavbarProps {}
+interface NavbarProps {
+  activeSection: string;
+  setActiveSection: (section: string) => void;
+}
 
 const Navbar: FC<NavbarProps> = (props) => {
 
+  const { activeSection, setActiveSection } = props;
+
   return (
-    <div className="px-10 flex items-center justify-between py-5 border-b border-lightGray">
-      <div className="flex items-center justify-start">
-        <p className="text-gray border px-10 py-3 font-bold border-lightGray rounded-lg">
-          Logo
-        </p>
-        <ul className="flex items-center justify-start ml-10">
-          <li 
-            className="tracking-widest px-5 text-sm nunito-sans transition duration-150 hover:text-lightBlack uppercase text-black font-medium"><Link href="/">Home</Link></li>
+    <div className="md:block sm:hidden block w-full border-b border-gold">
+      <div className="w-full grid grid-cols-12">
+        <div className="col-span-6">
+          <ul className="flex items-center justify-start">
+            <li 
+              onClick={ () => setActiveSection('home') }
+              className={ cx("tracking-widest cursor-pointer p-5 text-sm nunito-sans transition duration-150 uppercase text-white font-medium", { 
+                'text-gold font-bold border-b-2 border-gold': activeSection == 'home'
+              }) }>
+              Home
+            </li>
 
-          <li 
-            className="tracking-widest px-5 text-sm nunito-sans transition duration-150 hover:text-lightBlack uppercase text-black font-medium"><Link href="/about">About</Link></li>
+            <li 
+              onClick={ () => setActiveSection('about') }
+              className={ cx("tracking-widest cursor-pointer p-5 text-sm nunito-sans transition duration-150 uppercase text-white font-medium", { 
+                'text-gold font-bold border-b-2 border-gold': activeSection == 'about'
+              }) }>
+              What We do
+            </li>
 
-          <li 
-            className="tracking-widest px-5 text-sm nunito-sans transition duration-150 hover:text-lightBlack uppercase text-black font-medium"><Link href="/listings">Listings</Link></li>
+            <li 
+              onClick={ () => setActiveSection('listings') }
+              className={ cx("tracking-widest cursor-pointer p-5 text-sm nunito-sans transition duration-150 uppercase text-white font-medium", { 
+                'text-gold font-bold border-b-2 border-gold': activeSection == 'listings'
+              }) }>
+              Listings
+            </li>
+          </ul>
+        </div>
 
-          <li 
-            className="tracking-widest px-5 text-sm nunito-sans transition duration-150 hover:text-lightBlack uppercase text-black font-medium"><Link href="/contact">Contact</Link></li>
-        </ul>
+        <div className="col-span-6">
+          <div className="flex items-center h-full justify-end">
+            <button className="px-5 shadow-lg flex items-center font-medium text-lg py-2 rounded bg-gold text-white">
+              <FontAwesomeIcon 
+                className="w-3 mr-2"
+                icon={ faLocationArrow }
+              />
+              Inquire Now
+            </button>
+          </div>
+        </div>
       </div>
-      <a href="mailto:info@property-wizard.com">info@property-wizard.com</a>
+     
     </div>
   )
 }
