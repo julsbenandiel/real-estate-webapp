@@ -14,7 +14,7 @@ export interface PropertyListingType {
   onLandingPage: boolean;
   projectBannerFull: any;
   projectBuildingFeatures: {
-    project_features: [{ feature: string, list?: Array<string> }]
+    project_features: [{ feature?: string, list?: Array<string> }]
   }
   projectLandingThumbnail: any;
   projectDescriptionImage: any;
@@ -27,6 +27,6 @@ export interface PropertyListingType {
   slug: string;
   unitArea: string;
   unitFeatures: {
-    unit_features: [{ feature: string, list?: Array<string> }]
+    unit_features: [{ feature?: string, list?: Array<string> }]
   }
 }

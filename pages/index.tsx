@@ -2,7 +2,7 @@ import { createClient } from 'contentful';
 import PropertyCardBare from '../components/PropertyCardBare';
 import Banner from '../components/banner';
 import { ContentModel, contentfulClient } from '../configs/index';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Navbar from '../components/navbar';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -36,12 +36,27 @@ export async function getServerSideProps() {
 
 export default function Home({ total, properties, banners }) {
 
-  console.log({ properties });
-
   const [activeSection, setActiveSection] = useState<string>('home'); 
 
-  const navigationPrevRef = React.useRef(null)
-  const navigationNextRef = React.useRef(null)
+  console.log({ properties })
+
+  const navigationPrevRef = React.useRef(null);
+  const navigationNextRef = React.useRef(null);
+
+  const pagesRef = {
+    homeRef: useRef(null),
+    listingsRef: useRef(null),
+    whatWeDoRef: useRef(null)
+  }
+  
+
+  const scrollToElement = (ref: any) => {
+    if (pagesRef[ref]) {
+      pagesRef[ref].current.scrollIntoView({
+        behavior: 'smooth',
+      })    
+    }
+  }
 
   useEffect(() => {
     document.body.style.zoom = "100%"
@@ -49,7 +64,9 @@ export default function Home({ total, properties, banners }) {
   
   return (
     <>
-      <div className="pt-5 relative">
+      <div
+        ref={ pagesRef.homeRef } 
+        className="pt-5 relative">
         <div
           style={{ height: '420px', zIndex: -1 }}  
           className="absolute header-v2 bg-blue w-full top-0"></div>
@@ -93,6 +110,7 @@ export default function Home({ total, properties, banners }) {
         </div>
         <div className="maxwidth-1200 mx-auto">
           <Navbar 
+            scrollToElement={ scrollToElement }
             activeSection={ activeSection } 
             setActiveSection={ setActiveSection }  
           />
@@ -108,9 +126,102 @@ export default function Home({ total, properties, banners }) {
         </div>
       </div>
 
-      <WhatWeDo />
+      <div className="mb-10 maxwidth-1200 mx-auto mt-10">
+        <p className="border-l-4 border-gold text-blue playfair mb-5 font-semibold text-3xl pl-3">
+          Latest Articles
+        </p>
+        <div className="grid grid-cols-12 gap-5">
+          <div className="col-span-4">
+            <div>
+              <Image
+                className="rounded"
+                width="420"
+                height="240" 
+                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+              />
+              <div className="flex justify-end -mt-1">
+                <p className="text-gray opacity-75 text-xs mb-1">January 20, 2021</p>
+              </div>
+              <p 
+                style={{ lineHeight: "22px" }}
+                className="text-navy text-xl font-medium hover:text-blue cursor-pointer mb-2">10 Things to Consider When Getting a New House (2020 update)</p>
 
-      <section>
+              <p className="text-sm opacity-75">aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ext aliquip ex ea</p>
+              <p className="text-black hover:text-blue cursor-pointer italic">Continue Reading...</p>
+              
+            </div>
+          </div>
+          <div className="col-span-5">
+            <div className="grid grid-cols-12 gap-2">
+              <div className="col-span-5">
+                <img
+                  style={{ height: "160px" }}
+                  className="rounded object-cover" 
+                  src="https://images.unsplash.com/photo-1544717301-9cdcb1f5940f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="" />
+              </div>
+              <div className="col-span-7 flex flex-col justify-center">
+                <p className="text-navy font-medium hover:text-blue cursor-pointer">Avoid Stress Talking to your Clients and Make a Sale!</p>
+                <p className="text-gray opacity-75 text-xs mb-2">January 20, 2021</p>
+                <p className="text-sm opacity-75 text-justify">aliqua. Ut enim ad minim veniam, ullamco laboris nisi ut aliquip ext aliquip ex ea</p>
+                <p className="text-black hover:text-blue text-sm cursor-pointer italic">Continue Reading...</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-12 gap-2 mt-5">
+              <div className="col-span-5">
+                <img
+                  style={{ height: "160px" }}
+                  className="rounded object-cover" 
+                  src="https://images.unsplash.com/photo-1526948531399-320e7e40f0ca?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="" />
+              </div>
+              <div className="col-span-7 flex flex-col justify-center">
+                <p className="text-navy font-medium hover:text-blue cursor-pointer">Present to your Clients The Right Way (Updated)</p>
+                <p className="text-gray opacity-75 text-xs mb-2">January 20, 2021</p>
+                <p className="text-sm opacity-75 text-justify">aliqua. Ut enim ad minim veniam, ullamco laboris nisi ut aliquip ext aliquip ex ea</p>
+                <p className="text-black hover:text-blue text-sm cursor-pointer italic">Continue Reading...</p>
+              </div>
+            </div>
+          </div>
+          <div className="col-span-3">
+            <div className="grid grid-cols-12 gap-2 mb-3">
+              <div className="col-span-5 bg-lightGray rounded h-full">
+
+              </div>
+              <div className="col-span-7 flex flex-col justify-center">
+                <p className="text-navy font-medium hover:text-blue cursor-pointer">Ut enim ad minim</p>
+                <p className="text-gray opacity-75 text-xs mb-2">January 20, 2021</p>
+                <p className="text-sm opacity-75 text-justify">aliqua. Ut enim ad minim veniam</p>
+                <p className="text-black hover:text-blue text-xs cursor-pointer italic">Continue Reading...</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-12 gap-2 mb-3">
+              <div className="col-span-5 bg-lightGray rounded h-full">
+
+              </div>
+              <div className="col-span-7 flex flex-col justify-center">
+                <p className="text-navy font-medium hover:text-blue cursor-pointer">Ut enim ad minim</p>
+                <p className="text-gray opacity-75 text-xs mb-2">January 20, 2021</p>
+                <p className="text-sm opacity-75 text-justify">aliqua. m, ullamco laboris</p>
+                <p className="text-black hover:text-blue text-xs cursor-pointer italic">Continue Reading...</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-12 gap-2">
+              <div className="col-span-5 bg-lightGray rounded h-full">
+
+              </div>
+              <div className="col-span-7 flex flex-col justify-center">
+                <p className="text-navy font-medium hover:text-blue cursor-pointer">Ut enim ad minim</p>
+                <p className="text-gray opacity-75 text-xs mb-2">January 20, 2021</p>
+                <p className="text-sm opacity-75 text-justify">aliqua. Ut enim ad minim veniam, ullamco laboris</p>
+                <p className="text-black hover:text-blue text-xs cursor-pointer italic">Continue Reading...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div ref={ pagesRef.whatWeDoRef }><WhatWeDo /></div>
+
+      <section ref={ pagesRef.listingsRef }>
         <div className="bg-white mt-10 p-5">
           <div className="maxwidth-1200 mx-auto">
             <p className="border-l-4 border-gold text-blue playfair mb-5 font-semibold text-3xl pl-3">

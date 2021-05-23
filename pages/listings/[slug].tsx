@@ -47,6 +47,8 @@ const ListingDetailsPage = ({ property }) => {
 
   const data: PropertyListingType = property.fields;
 
+  console.log({ property })
+
   const [gallery, setGallery] = useState<Array<string>>([]);
   const [activeTab, setActiveTab] = useState<TabOptionType>(TAB_OPTIONS[0]);
   const [photoIndex, setPhotoIndex] = useState<number>(0);
@@ -150,7 +152,7 @@ const ListingDetailsPage = ({ property }) => {
                 src={ `https://${data.projectDescriptionImage.fields.file.url}` }
               />
               <p className="text-black text-xl font-semibold mt-5 mb-1">Description</p>
-              <p className="text-sm text-black">{ data.fullDescription }</p>
+              <p className="text-sm text-black text-justify">{ data.fullDescription }</p>
             </div>
             <div className="col-span-4">
               <div className="border border-lightGray shadow-md rounded p-5">
@@ -260,7 +262,7 @@ const ListingDetailsPage = ({ property }) => {
           <section className="mt-5">
             { data.unitFeatures.unit_features.map((unitFeature: { feature: string, list: Array<string> }) => (
               <div className="mb-3">
-                <p className="text-blue tracking-wide text-lg playfair font-semibold">{ unitFeature.feature }</p>
+                <p className="text-blue tracking-wide text-lg playfair font-semibold">{ unitFeature.feature || '' }</p>
                 { unitFeature.list && unitFeature.list.length > 0 && 
                 unitFeature.list.map((item: string) => (
                   <p className="text-black opacity-80 ml-5">
@@ -277,7 +279,7 @@ const ListingDetailsPage = ({ property }) => {
           <section className="mt-5">
             { data.projectBuildingFeatures.project_features.map((unitFeature: { feature: string, list: Array<string> }) => (
               <div className="mb-3">
-                <p className="text-blue tracking-wide text-lg playfair font-semibold">{ unitFeature.feature }</p>
+                <p className="text-blue tracking-wide text-lg playfair font-semibold">{ unitFeature.feature || ''}</p>
                 { unitFeature.list && unitFeature.list.length > 0 && 
                 unitFeature.list.map((item: string) => (
                   <p className="text-black opacity-80 ml-5">
