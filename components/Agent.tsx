@@ -36,7 +36,7 @@ const Agent: FC<AgentProps> = props => {
 
   return (
     <section>
-      <Image
+      <img
         className=""
         height={ profilePic.fields.file.details.image.height }
         width={ profilePic.fields.file.details.image.width }

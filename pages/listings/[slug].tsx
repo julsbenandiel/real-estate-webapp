@@ -93,7 +93,7 @@ const ListingDetailsPage = ({ property }) => {
 
         <div className="relative">
           {/* real image */}
-          <Image 
+          <img 
             className="rounded"
             width={ data.projectBannerFull.fields.file.details.image.width }
             height={ data.projectBannerFull.fields.file.details.image.height }
@@ -104,7 +104,7 @@ const ListingDetailsPage = ({ property }) => {
           <div
             style={{ left: "1rem", top:"1rem" }} 
             className="absolute">
-            <Image 
+            <img 
               className="rounded"
               width={ data.developerLogo.fields.file.details.image.width }
               height={ data.developerLogo.fields.file.details.image.height }
@@ -145,7 +145,7 @@ const ListingDetailsPage = ({ property }) => {
         { activeTab.value == 'listing-overview' && (
           <section className="grid grid-cols-12 gap-5 mt-5">
             <div className="col-span-8">
-              <Image 
+              <img 
                 className="rounded"
                 width={ data.projectDescriptionImage.fields.file.details.image.width }
                 height={ data.projectDescriptionImage.fields.file.details.image.height }
@@ -298,7 +298,7 @@ const ListingDetailsPage = ({ property }) => {
             <section className="grid grid-cols-12 gap-2">
               { data.gallery.map((image: any, index: number) => (
                 <div className="col-span-3">
-                  <Image 
+                  <img 
                     onClick={ () => {
                       setLightBoxIsOpen(true);
                       setPhotoIndex(index)

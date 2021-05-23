@@ -34,9 +34,11 @@ const FeaturdProperties: FC<FeaturdPropertiesProps> = ({ nextRef, prevRef, prope
         { properties.map((property: any, index: number) => {
             const data: PropertyListingType = property.fields;
             return (
-              <SwiperSlide key={ index }>
+              <SwiperSlide 
+                style={{ width:  data.projectLandingThumbnail.fields.file.details.image.width }}
+                key={ index }>
                 <div className="">
-                  <Image
+                  <img
                     width={ data.projectLandingThumbnail.fields.file.details.image.width }
                     height={ data.projectLandingThumbnail.fields.file.details.image.height }
                     className="rounded"

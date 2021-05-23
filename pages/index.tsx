@@ -133,7 +133,7 @@ export default function Home({ total, properties, banners }) {
         <div className="grid grid-cols-12 gap-5">
           <div className="col-span-4">
             <div>
-              <Image
+              <img
                 className="rounded"
                 width="420"
                 height="240" 

@@ -61,7 +61,7 @@ const PropertyCard: FC<PropertyCardProps> = props => {
           </div>
         </div>
 
-        <Image
+        <img
           className="rounded-tl-xl rounded-tr-xl rounded-br-lg rounded-bl-lg"
           src={ `https:${thumbnail}` }
           alt="Picture of the author"

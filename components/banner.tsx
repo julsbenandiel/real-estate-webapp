@@ -33,7 +33,7 @@ const Banner: FC<BannerProps> = props =>  {
         </button>
       </div>
 
-      <Image
+      <img
         className=""
         height={ image.details.image.height }
         width={ image.details.image.width }

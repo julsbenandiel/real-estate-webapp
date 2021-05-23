@@ -40,7 +40,7 @@ const PropertyCardBare: FC<PropertyCardBareProps> = props => {
 
   return (
     <div className="">
-      <Image
+      <img
         className="rounded-tl-md rounded-tr-md"
         src={ `https:${thumbnail}` }
         alt={ `${title}-thumbnail` }
